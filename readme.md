@@ -1,51 +1,93 @@
-**Multimodal Live Streaming Data for Traffic Accident Detection using YoloV11 based Federated Learning in Edge Computing**
+🚦 Multimodal Traffic Accident Detection using YOLOv11 & Federated Learning
 📌 Project Overview
-This research presents a novel methodology for enhancing smart city safety through advanced traffic accident detection. By integrating YoloV11 with Federated Learning (FL), the system enables real-time processing and identification of incidents while preserving data privacy.
-The system is designed for Edge-Cloud Architecture, utilizing Kubernetes-based containerized computing for superior scalability compared to conventional systems.
-🚀 Key Features
-•	Real-Time Detection: Uses YoloV11 to identify, categorize, and track moving objects, including velocity and direction calculations.
-•	Privacy-Preserving: Federated Learning ensures that only model weights are shared with the central MEC server, keeping raw data local to the edge clients.
-•	Multimodal Integration: Supports data from CCTV (4K), LIDAR, Radar, and IMU sensors.
-•	High Accuracy: The Deep Learning system achieved 99.07% accuracy, while the XGBoost model recorded 99.8% accuracy for highway collisions.
-•	Scalable Infrastructure: Implemented using NVIDIA Jetson NX edge nodes and Kubernetes for orchestration.
-📊 Performance Analysis
-The proposed framework outperforms traditional centralized models in several key areas:
-•	Inference Latency: Significantly lower latency compared to centralized CNNs and YOLOv8 Edge implementations.
-•	Robustness: High precision and F1-scores across varying environmental conditions like weather and illumination.
-•	ROC Curve: Demonstrates strong reliability with an Area Under the Curve (AUC) of 0.94.
-🛠️ System Configuration
-Federated Learning Setup
-Aspect	Configuration
-FL Algorithm	FedAvg / FedProx 
-Edge Clients	10–50 nodes 
-Aggregation Server	Multi-access Edge Computing (MEC) 
-Communication	5G-V2X, DSRC 
-Hardware & Software Stack
-•	Deep Learning: PyTorch, TensorFlow, OpenCV.
-•	Hardware: NVIDIA Jetson NX, Xilinx FPGA.
-•	Cloud/Edge: AWS, Azure, MQTT Brokers.
-📁 Repository Structure
-•	EdgeComputing.ipynb: The primary notebook containing data preprocessing, YoloV11 classification training, and testing logic.
-•	weights/best.pt: The trained YoloV11 model weights (saved from Epoch 12).
-•	dataset/: Folder structure for train, val, and test data (Accident vs. Non-Accident classes).
-📖 How to Run
-1.	Environment Setup: Install the necessary requirements:
-Bash
-pip install ultralytics opencv-python torch
-2.	Training: The model was trained for 50 epochs with an image size of 224x224 and early stopping enabled.
-3.	Inference:
-Python
-from ultralytics import YOLO
-model = YOLO('best.pt')
-results = model.predict(source='your_video.mp4')
-🔗 Data Sources
-The model was trained and validated using the following datasets:
-•	DeepAccident Dataset: Download Link 
-•	TADS (RGB + Optical Flow + Eye-gaze): GitHub 
-•	TAD Bench (Large-scale Highway): GitHub 
-🎓 Author
-Dr. M. Gomathy Nayagam Associate Professor, Department of Computer Science and Business Systems
-Ramco Institute of Technology, Rajapalayam.
-🔮 Future Scope
-Future iterations of this project will incorporate a Blockchain model to further enhance security and privacy for real-time traffic applications.
 
+This project presents a smart traffic accident detection system that combines YOLOv11 with Federated Learning (FL) to enable real-time, privacy-preserving incident detection in smart cities.
+
+The system is built on an Edge-Cloud architecture, leveraging containerized deployment with Kubernetes for scalability and efficient distributed processing.
+
+🚀 Key Features
+🔍 Real-Time Detection
+Detects and tracks vehicles and incidents using YOLOv11 with velocity and direction estimation.
+🔐 Privacy-Preserving Learning
+Uses Federated Learning so that raw data remains on edge devices while only model updates are shared.
+📡 Multimodal Data Integration
+Supports multiple sensor inputs:
+CCTV (4K video)
+LiDAR
+Radar
+IMU sensors
+📊 High Accuracy
+Deep Learning Model Accuracy: 99.07%
+XGBoost Model Accuracy: 99.8% (highway collision detection)
+⚙️ Scalable Infrastructure
+Deployed on NVIDIA Jetson NX edge devices with Kubernetes orchestration.
+📊 Performance Analysis
+Metric	Performance
+Inference Latency	Low (Edge-optimized)
+Precision / Recall	High across varied conditions
+F1 Score	Strong consistency
+ROC AUC	0.94
+
+✔️ Outperforms traditional centralized CNN and YOLO-based edge systems
+✔️ Robust under varying weather and lighting conditions
+
+🛠️ System Configuration
+🔁 Federated Learning Setup
+Component	Configuration
+FL Algorithms	FedAvg / FedProx
+Edge Clients	10–50 nodes
+Aggregation Server	MEC (Multi-access Edge Computing)
+Communication	5G-V2X, DSRC
+💻 Hardware & Software Stack
+
+Frameworks & Libraries
+
+PyTorch
+TensorFlow
+OpenCV
+Ultralytics YOLO
+
+Hardware
+
+NVIDIA Jetson NX
+Xilinx FPGA
+
+Cloud & Communication
+
+AWS / Azure
+MQTT Brokers
+📁 Repository Structure
+├── EdgeComputing.ipynb     # Main notebook (training + testing)
+├── weights/
+│   └── best.pt             # Trained YOLOv11 model (Epoch 12)
+├── dataset/
+│   ├── train/
+│   ├── val/
+│   └── test/
+▶️ How to Run
+1️⃣ Environment Setup
+pip install ultralytics opencv-python torch
+2️⃣ Training
+Epochs: 50
+Image Size: 224 × 224
+Early stopping enabled
+3️⃣ Inference
+from ultralytics import YOLO
+
+model = YOLO('weights/best.pt')
+results = model.predict(source='your_video.mp4')
+🔗 Datasets
+DeepAccident Dataset – (Provide link)
+TADS (RGB + Optical Flow + Eye-Gaze) – (GitHub link)
+TAD Bench (Highway Dataset) – (GitHub link)
+🎓 Author
+
+Dr. M. Gomathy Nayagam
+Associate Professor
+Department of Computer Science and Business Systems
+Ramco Institute of Technology, Rajapalayam
+
+🔮 Future Scope
+Integration of Blockchain technology for enhanced security and trust
+Expansion to fully autonomous traffic monitoring systems
+Improved edge intelligence and adaptive learning models
